@@ -1,0 +1,16 @@
+**/bin/
+**/obj/
+**/.vs/
+**/.vscode/
+**/*.user
+**/*.suo
+**/*.cache
+**/*.log
+Dockerfile
+README.md
+*.md
+*.pdb
+*.db
+*.sqlite
+*.sqlite3
+TestApp.csproj.user
