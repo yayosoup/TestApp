@@ -11,11 +11,12 @@ if (string.IsNullOrWhiteSpace(secretJson))
 var host = Environment.GetEnvironmentVariable("DB_HOST");
 if (string.IsNullOrWhiteSpace(host))
     throw new Exception("Missing env var: DB_HOST (RDS endpoint)");
+Console.WriteLine(host);
 
 var secret = JsonSerializer.Deserialize<DbSecret>(secretJson)
              ?? throw new Exception("Could not parse ConnectionStrings__Default as JSON");
 
-var dbName = "database-1"; // or whatever you set as initial DB name
+var dbName = "endearinglcs";
 var connString = $"Host={host};Database={dbName};Username={secret.username};Password={secret.password}";
 
 builder.Services.AddDbContext<AppDbContext>(o => o.UseNpgsql(connString));
