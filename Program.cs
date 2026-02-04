@@ -38,6 +38,11 @@ using (var scope = app.Services.CreateScope())
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     db.Database.CanConnect(); // will throw if SG is wrong
 }
+app.MapGet("/dbtest", async (AppDbContext db) =>
+{
+    await db.Database.OpenConnectionAsync();
+    return "DB CONNECTED";
+});
 
 app.Run();
 
